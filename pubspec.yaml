@@ -1,0 +1,58 @@
+name: dokan_system
+description: "dokan_system — international offline-first POS application."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+
+  cupertino_icons: ^1.0.8
+
+  # State management + dependency injection
+  flutter_riverpod: ^3.4.3
+  riverpod_annotation: ^4.0.7
+
+  # Navigation
+  go_router: ^18.1.0
+
+  # Offline-first local database (SQLite)
+  drift: ^2.35.2
+
+  # Secure storage (keystore/keychain backed)
+  flutter_secure_storage: ^11.2.0
+
+  # REST client for background sync
+  dio: ^5.11.1
+
+  # Utilities
+  uuid: ^4.6.0
+  path_provider: ^2.1.5
+  cryptography: ^2.9.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+  drift_dev: ^2.35.1
+  build_runner: ^2.15.1
+  riverpod_generator: ^4.0.9
+
+# Bundle SQLite3MultipleCiphers (encrypted SQLite) instead of stock SQLite.
+# Applied through package:sqlite3 build hooks (drift >= 2.32 / sqlite3 3.x).
+hooks:
+  user_defines:
+    sqlite3:
+      source: sqlite3mc
+
+flutter:
+  uses-material-design: true
+  generate: true
